@@ -89,6 +89,7 @@ var generateMeaningCard = function (meaning) {
     var baseCardTitle = document.createElement("div");
     baseCardTitle.className = "fst-italic fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top";
     baseCardTitle.style.backgroundColor = "white";
+    baseCardTitle.style.width = "75%";
     baseCardTitle.innerText = meaning.partOfSpeech;
     baseCard.appendChild(baseCardTitle);
     var i = 0;
@@ -116,19 +117,6 @@ var generateWordCard = function (word) {
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     mainCard.appendChild(cardBody);
-    /*
-  
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
-  
-     */
     return mainCard;
 };
 window.onload = function () {
@@ -175,10 +163,8 @@ window.onload = function () {
                         eachWordAccordionButton.setAttribute("aria-expanded", "true");
                         eachWordAccordionButton.setAttribute("aria-controls", "".concat(eachWord.word, "_").concat(i));
                         eachWordAccordionButton.innerHTML = "<span>".concat(i + 1, ")  <b>").concat(eachWord.word, "</b></span>");
-                        // // wrap it all together folks
                         eachWordAccordionHeader.appendChild(eachWordAccordionButton);
                         eachWordAccordionItem.appendChild(eachWordAccordionHeader);
-                        // where we put out content (eachWordAccordionBody)
                         eachWordAccordionCollapse.appendChild(eachWordAccordionBody);
                         eachWordAccordionItem.appendChild(eachWordAccordionCollapse);
                         wordAccordion.appendChild(eachWordAccordionItem);
