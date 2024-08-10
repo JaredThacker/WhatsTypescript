@@ -59,6 +59,7 @@ const generateDefinition = (definition: Definition, index: number): HTMLDivEleme
 
     definitionCard.innerText = `Definition ${index + 1}`;
     definitionCard.className = "text-primary fs-6 fw-lighter";
+    definitionCard.style.width = "fit-content";
     definitionCard.style.cursor = "pointer";
 
     return definitionCard;
@@ -67,7 +68,7 @@ const generateDefinition = (definition: Definition, index: number): HTMLDivEleme
 const generateMeaningCard = (meaning: Meaning): HTMLDivElement => {
 
   const baseCard = document.createElement("div");
-  baseCard.className = "border rounded shadow px-3 pb-3 d-flex flex-column gap-3 overflow-y-scroll";
+  baseCard.className = "border rounded shadow px-3 pb-3 d-flex flex-column gap-3 overflow-y-scroll flex-grow-1 align-items-center";
   baseCard.style.maxHeight = "40vh";
 
   baseCard.addEventListener("scroll", (event) => {
@@ -111,7 +112,7 @@ const generateWordCard = (word: Word): HTMLDivElement => {
   cardTitle.innerText = word.phonetic;
 
   const cardText = document.createElement("div");
-  cardText.className = "card-text d-flex flex-row justify-content-around";
+  cardText.className = "card-text d-flex flex-row justify-content-around gap-4";
 
   for (const eachMeaning of word.meanings) {
     cardText.appendChild(generateMeaningCard(eachMeaning));

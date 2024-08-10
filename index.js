@@ -71,12 +71,13 @@ var generateDefinition = function (definition, index) {
     definitionCard.id = definitionCardId;
     definitionCard.innerText = "Definition ".concat(index + 1);
     definitionCard.className = "text-primary fs-6 fw-lighter";
+    definitionCard.style.width = "fit-content";
     definitionCard.style.cursor = "pointer";
     return definitionCard;
 };
 var generateMeaningCard = function (meaning) {
     var baseCard = document.createElement("div");
-    baseCard.className = "border rounded shadow px-3 pb-3 d-flex flex-column gap-3 overflow-y-scroll";
+    baseCard.className = "border rounded shadow px-3 pb-3 d-flex flex-column gap-3 overflow-y-scroll flex-grow-1 align-items-center";
     baseCard.style.maxHeight = "40vh";
     baseCard.addEventListener("scroll", function (event) {
         var divElem = event.target;
@@ -107,7 +108,7 @@ var generateWordCard = function (word) {
     cardTitle.className = "card-title";
     cardTitle.innerText = word.phonetic;
     var cardText = document.createElement("div");
-    cardText.className = "card-text d-flex flex-row justify-content-around";
+    cardText.className = "card-text d-flex flex-row justify-content-around gap-4";
     for (var _i = 0, _a = word.meanings; _i < _a.length; _i++) {
         var eachMeaning = _a[_i];
         cardText.appendChild(generateMeaningCard(eachMeaning));
