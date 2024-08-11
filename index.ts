@@ -19,8 +19,8 @@ interface Meaning {
 interface Definition {
   definition: string
   example: string
-  synonyms: any[]
-  antonyms: any[]
+  synonyms: string[]
+  antonyms: string[]
 }
 
 const formId = "defineform";
@@ -45,8 +45,6 @@ const hideTooltip = (tooltipContainerId: string) => {
   }
 }
 
-
-
 const generateDefinition = (definition: Definition, index: number): HTMLDivElement => {
     const definitionCard = document.createElement("div");
     const definitionCardId = `definition_tooltip_container_${index}`;
@@ -65,8 +63,58 @@ const generateDefinition = (definition: Definition, index: number): HTMLDivEleme
     return definitionCard;
 }
 
-const generateMeaningCard = (meaning: Meaning): HTMLDivElement => {
+const generateMiscInfo = (title: string, data: string[]): HTMLDivElement => {
 
+  const infoCard = document.createElement("div");
+
+  infoCard.className = "d-flex flex-column flex-grow-1";
+
+  const infoCardTitle = document.createElement("div");
+  infoCardTitle.innerText = `${title}`;
+  infoCardTitle.className = "fs-5";
+
+  const infoCardBody = document.createElement("div");
+  infoCardBody.className = "flex-wrap d-flex flex-row gap-2";
+
+  let i = 0;
+  for (const eachInfoDatum of data) {
+    const eachInfoSpan = document.createElement("span");
+    eachInfoSpan.innerText = eachInfoDatum;
+    // eachInfoSpan.innerText = `${title} ${i + 1}`
+    // eachInfoSpan.setAttribute("data-bs-toggle", "tooltip");
+    // eachInfoSpan.setAttribute("data-bs-title", eachInfoDatum);
+    // eachInfoSpan.setAttribute("data-bs-placement", "right");
+    // eachInfoSpan.setAttribute("data-bs-trigger", "hover");
+    infoCardBody.appendChild(eachInfoSpan);
+    // i++;
+  }
+
+  infoCard.appendChild(infoCardTitle);
+  infoCard.appendChild(infoCardBody);
+
+  return infoCard;
+}
+
+const generateMiscInfoCard = (definition: Definition): HTMLDivElement | undefined => {
+
+  const miscContainer = document.createElement("div");
+  miscContainer.className = "d-flex flex-column justify-content-around gap-3";
+  miscContainer.style.width = "100%";
+
+  if (definition.synonyms.length > 0) {
+    miscContainer.appendChild(generateMiscInfo("Synonyms", definition.synonyms));
+  }
+
+  if (definition.antonyms.length > 0) {
+    miscContainer.appendChild(generateMiscInfo("Antonyms", definition.antonyms));
+  }
+
+  const isValid = definition.synonyms.length > 0 || definition.antonyms.length > 0;
+
+  return isValid ? miscContainer : undefined;
+}
+
+const generateMeaningCard = (meaning: Meaning): HTMLDivElement => {
   const baseCard = document.createElement("div");
   baseCard.className = "border rounded shadow px-3 pb-3 d-flex flex-column gap-3 overflow-y-scroll flex-grow-1 align-items-center";
   baseCard.style.maxHeight = "40vh";
@@ -78,15 +126,12 @@ const generateMeaningCard = (meaning: Meaning): HTMLDivElement => {
       if (hoveredLink !== null) {
         hideTooltip(hoveredLink.id);
       }
-
-
   });
 
-
   const baseCardTitle = document.createElement("div");
-  baseCardTitle.className = "fst-italic fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top"
+  baseCardTitle.className = "fst-italic fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top text-nowrap"
   baseCardTitle.style.backgroundColor = "white";
-  baseCardTitle.style.width = "75%";
+  baseCardTitle.style.width = "100%";
   baseCardTitle.innerText = meaning.partOfSpeech;
 
   baseCard.appendChild(baseCardTitle);
@@ -94,14 +139,27 @@ const generateMeaningCard = (meaning: Meaning): HTMLDivElement => {
   let i = 0;
   for (const eachDefinition of meaning.definitions) {
     baseCard.appendChild(generateDefinition(eachDefinition, i));
+    // for (const eachDefinition of meaning.definitions) {
+    //
+    //   const infoCard = generateMiscInfoCard(eachDefinition);
+    //   if (infoCard !== undefined) {
+    //     baseCard.appendChild(infoCard);
+    //   }
+    // }
     i++;
+  }
+
+  for (const eachDefinition of meaning.definitions) {
+    const infoCard = generateMiscInfoCard(eachDefinition);
+    if (infoCard !== undefined) {
+      baseCard.appendChild(infoCard);
+    }
   }
 
   return baseCard;
 }
 
 const generateWordCard = (word: Word): HTMLDivElement => {
-
   const mainCard = document.createElement("div");
   mainCard.className = "card";
 
