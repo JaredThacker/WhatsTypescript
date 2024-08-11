@@ -75,44 +75,55 @@ var generateDefinition = function (definition, index) {
     definitionCard.style.cursor = "pointer";
     return definitionCard;
 };
-var generateMiscInfo = function (title, data) {
-    var infoCard = document.createElement("div");
-    infoCard.className = "d-flex flex-column flex-grow-1";
-    var infoCardTitle = document.createElement("div");
-    infoCardTitle.innerText = "".concat(title);
-    infoCardTitle.className = "fs-5";
-    var infoCardBody = document.createElement("div");
-    infoCardBody.className = "flex-wrap d-flex flex-row gap-2";
-    var i = 0;
-    for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
-        var eachInfoDatum = data_1[_i];
-        var eachInfoSpan = document.createElement("span");
-        eachInfoSpan.innerText = eachInfoDatum;
-        // eachInfoSpan.innerText = `${title} ${i + 1}`
-        // eachInfoSpan.setAttribute("data-bs-toggle", "tooltip");
-        // eachInfoSpan.setAttribute("data-bs-title", eachInfoDatum);
-        // eachInfoSpan.setAttribute("data-bs-placement", "right");
-        // eachInfoSpan.setAttribute("data-bs-trigger", "hover");
-        infoCardBody.appendChild(eachInfoSpan);
-        // i++;
-    }
-    infoCard.appendChild(infoCardTitle);
-    infoCard.appendChild(infoCardBody);
-    return infoCard;
-};
-var generateMiscInfoCard = function (definition) {
-    var miscContainer = document.createElement("div");
-    miscContainer.className = "d-flex flex-column justify-content-around gap-3";
-    miscContainer.style.width = "100%";
-    if (definition.synonyms.length > 0) {
-        miscContainer.appendChild(generateMiscInfo("Synonyms", definition.synonyms));
-    }
-    if (definition.antonyms.length > 0) {
-        miscContainer.appendChild(generateMiscInfo("Antonyms", definition.antonyms));
-    }
-    var isValid = definition.synonyms.length > 0 || definition.antonyms.length > 0;
-    return isValid ? miscContainer : undefined;
-};
+// const generateMiscInfo = (title: string, data: string[]): HTMLDivElement => {
+//
+//   const infoCard = document.createElement("div");
+//
+//   infoCard.className = "d-flex flex-column flex-grow-1";
+//
+//   const infoCardTitle = document.createElement("div");
+//   infoCardTitle.innerText = `${title}`;
+//   infoCardTitle.className = "fs-5";
+//
+//   const infoCardBody = document.createElement("div");
+//   infoCardBody.className = "flex-wrap d-flex flex-row gap-2";
+//
+//   let i = 0;
+//   for (const eachInfoDatum of data) {
+//     const eachInfoSpan = document.createElement("span");
+//     eachInfoSpan.innerText = eachInfoDatum;
+//     // eachInfoSpan.innerText = `${title} ${i + 1}`
+//     // eachInfoSpan.setAttribute("data-bs-toggle", "tooltip");
+//     // eachInfoSpan.setAttribute("data-bs-title", eachInfoDatum);
+//     // eachInfoSpan.setAttribute("data-bs-placement", "right");
+//     // eachInfoSpan.setAttribute("data-bs-trigger", "hover");
+//     infoCardBody.appendChild(eachInfoSpan);
+//     // i++;
+//   }
+//
+//   infoCard.appendChild(infoCardTitle);
+//   infoCard.appendChild(infoCardBody);
+//
+//   return infoCard;
+// }
+// const generateMiscInfoCard = (definition: Definition): HTMLDivElement | undefined => {
+//
+//   const miscContainer = document.createElement("div");
+//   miscContainer.className = "d-flex flex-column justify-content-around gap-3";
+//   miscContainer.style.width = "100%";
+//
+//   if (definition.synonyms.length > 0) {
+//     miscContainer.appendChild(generateMiscInfo("Synonyms", definition.synonyms));
+//   }
+//
+//   if (definition.antonyms.length > 0) {
+//     miscContainer.appendChild(generateMiscInfo("Antonyms", definition.antonyms));
+//   }
+//
+//   const isValid = definition.synonyms.length > 0 || definition.antonyms.length > 0;
+//
+//   return isValid ? miscContainer : undefined;
+// }
 var generateMeaningCard = function (meaning) {
     var baseCard = document.createElement("div");
     baseCard.className = "border rounded shadow px-3 pb-3 d-flex flex-column gap-3 overflow-y-scroll flex-grow-1 align-items-center";
@@ -143,13 +154,12 @@ var generateMeaningCard = function (meaning) {
         // }
         i++;
     }
-    for (var _b = 0, _c = meaning.definitions; _b < _c.length; _b++) {
-        var eachDefinition = _c[_b];
-        var infoCard = generateMiscInfoCard(eachDefinition);
-        if (infoCard !== undefined) {
-            baseCard.appendChild(infoCard);
-        }
-    }
+    // for (const eachDefinition of meaning.definitions) {
+    //   const infoCard = generateMiscInfoCard(eachDefinition);
+    //   if (infoCard !== undefined) {
+    //     baseCard.appendChild(infoCard);
+    //   }
+    // }
     return baseCard;
 };
 var generateWordCard = function (word) {

@@ -63,56 +63,56 @@ const generateDefinition = (definition: Definition, index: number): HTMLDivEleme
     return definitionCard;
 }
 
-const generateMiscInfo = (title: string, data: string[]): HTMLDivElement => {
+// const generateMiscInfo = (title: string, data: string[]): HTMLDivElement => {
+//
+//   const infoCard = document.createElement("div");
+//
+//   infoCard.className = "d-flex flex-column flex-grow-1";
+//
+//   const infoCardTitle = document.createElement("div");
+//   infoCardTitle.innerText = `${title}`;
+//   infoCardTitle.className = "fs-5";
+//
+//   const infoCardBody = document.createElement("div");
+//   infoCardBody.className = "flex-wrap d-flex flex-row gap-2";
+//
+//   let i = 0;
+//   for (const eachInfoDatum of data) {
+//     const eachInfoSpan = document.createElement("span");
+//     eachInfoSpan.innerText = eachInfoDatum;
+//     // eachInfoSpan.innerText = `${title} ${i + 1}`
+//     // eachInfoSpan.setAttribute("data-bs-toggle", "tooltip");
+//     // eachInfoSpan.setAttribute("data-bs-title", eachInfoDatum);
+//     // eachInfoSpan.setAttribute("data-bs-placement", "right");
+//     // eachInfoSpan.setAttribute("data-bs-trigger", "hover");
+//     infoCardBody.appendChild(eachInfoSpan);
+//     // i++;
+//   }
+//
+//   infoCard.appendChild(infoCardTitle);
+//   infoCard.appendChild(infoCardBody);
+//
+//   return infoCard;
+// }
 
-  const infoCard = document.createElement("div");
-
-  infoCard.className = "d-flex flex-column flex-grow-1";
-
-  const infoCardTitle = document.createElement("div");
-  infoCardTitle.innerText = `${title}`;
-  infoCardTitle.className = "fs-5";
-
-  const infoCardBody = document.createElement("div");
-  infoCardBody.className = "flex-wrap d-flex flex-row gap-2";
-
-  let i = 0;
-  for (const eachInfoDatum of data) {
-    const eachInfoSpan = document.createElement("span");
-    eachInfoSpan.innerText = eachInfoDatum;
-    // eachInfoSpan.innerText = `${title} ${i + 1}`
-    // eachInfoSpan.setAttribute("data-bs-toggle", "tooltip");
-    // eachInfoSpan.setAttribute("data-bs-title", eachInfoDatum);
-    // eachInfoSpan.setAttribute("data-bs-placement", "right");
-    // eachInfoSpan.setAttribute("data-bs-trigger", "hover");
-    infoCardBody.appendChild(eachInfoSpan);
-    // i++;
-  }
-
-  infoCard.appendChild(infoCardTitle);
-  infoCard.appendChild(infoCardBody);
-
-  return infoCard;
-}
-
-const generateMiscInfoCard = (definition: Definition): HTMLDivElement | undefined => {
-
-  const miscContainer = document.createElement("div");
-  miscContainer.className = "d-flex flex-column justify-content-around gap-3";
-  miscContainer.style.width = "100%";
-
-  if (definition.synonyms.length > 0) {
-    miscContainer.appendChild(generateMiscInfo("Synonyms", definition.synonyms));
-  }
-
-  if (definition.antonyms.length > 0) {
-    miscContainer.appendChild(generateMiscInfo("Antonyms", definition.antonyms));
-  }
-
-  const isValid = definition.synonyms.length > 0 || definition.antonyms.length > 0;
-
-  return isValid ? miscContainer : undefined;
-}
+// const generateMiscInfoCard = (definition: Definition): HTMLDivElement | undefined => {
+//
+//   const miscContainer = document.createElement("div");
+//   miscContainer.className = "d-flex flex-column justify-content-around gap-3";
+//   miscContainer.style.width = "100%";
+//
+//   if (definition.synonyms.length > 0) {
+//     miscContainer.appendChild(generateMiscInfo("Synonyms", definition.synonyms));
+//   }
+//
+//   if (definition.antonyms.length > 0) {
+//     miscContainer.appendChild(generateMiscInfo("Antonyms", definition.antonyms));
+//   }
+//
+//   const isValid = definition.synonyms.length > 0 || definition.antonyms.length > 0;
+//
+//   return isValid ? miscContainer : undefined;
+// }
 
 const generateMeaningCard = (meaning: Meaning): HTMLDivElement => {
   const baseCard = document.createElement("div");
@@ -149,12 +149,12 @@ const generateMeaningCard = (meaning: Meaning): HTMLDivElement => {
     i++;
   }
 
-  for (const eachDefinition of meaning.definitions) {
-    const infoCard = generateMiscInfoCard(eachDefinition);
-    if (infoCard !== undefined) {
-      baseCard.appendChild(infoCard);
-    }
-  }
+  // for (const eachDefinition of meaning.definitions) {
+  //   const infoCard = generateMiscInfoCard(eachDefinition);
+  //   if (infoCard !== undefined) {
+  //     baseCard.appendChild(infoCard);
+  //   }
+  // }
 
   return baseCard;
 }
