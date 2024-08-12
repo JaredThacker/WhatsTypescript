@@ -56,7 +56,7 @@ const generateDefinition = (definition: Definition, index: number): HTMLDivEleme
     definitionCard.id = definitionCardId;
 
     definitionCard.innerText = `Definition ${index + 1}`;
-    definitionCard.className = "text-primary fs-6 fw-lighter";
+    definitionCard.className = "text-info fs-6 fw-lighter";
     definitionCard.style.width = "fit-content";
     definitionCard.style.cursor = "pointer";
 
@@ -132,9 +132,10 @@ const generateMeaningCard = (meaning: Meaning): HTMLDivElement => {
   });
 
   const baseCardTitle = document.createElement("div");
-  baseCardTitle.className = "fst-italic fw-bold fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top text-nowrap"
-  baseCardTitle.style.backgroundColor = "white";
-  baseCardTitle.style.width = "100%";
+  // baseCardTitle.className = "fst-italic fw-bold fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top text-nowrap"
+  baseCardTitle.className = "fst-italic fw-bold fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline text-nowrap"
+  // baseCardTitle.style.backgroundColor = "white";
+  // baseCardTitle.style.width = "100%";
   baseCardTitle.innerText = meaning.partOfSpeech;
 
   baseCard.appendChild(baseCardTitle);
@@ -167,7 +168,7 @@ const generateWordCard = (word: Word): HTMLDivElement => {
   mainCard.className = "card";
 
   const cardBody = document.createElement("div");
-  cardBody.className = "card-body";
+  cardBody.className = "card-body text-bg-dark";
 
   const cardTitle = document.createElement("div");
   cardTitle.className = "card-title";
