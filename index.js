@@ -129,7 +129,7 @@ var generateMeaningCard = function (meaning) {
     });
     var baseCardTitle = document.createElement("div");
     // baseCardTitle.className = "fst-italic fw-bold fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top text-nowrap"
-    baseCardTitle.className = "fst-italic fw-bold fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline text-nowrap";
+    baseCardTitle.className = "fst-italic fw-bold fs-5 pt-3 px-3 text-center text-decoration-underline text-nowrap";
     // baseCardTitle.style.backgroundColor = "white";
     // baseCardTitle.style.width = "100%";
     baseCardTitle.innerText = meaning.partOfSpeech;
