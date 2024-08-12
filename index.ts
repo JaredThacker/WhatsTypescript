@@ -194,6 +194,7 @@ window.onload = () => {
   const body = document.querySelector("body");
   body.style.fontFamily = "Quicksand, sans-serif";
 
+
   const formElement = document.getElementById(formId);
 
   formElement.onsubmit = async (event) => {
