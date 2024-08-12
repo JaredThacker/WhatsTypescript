@@ -80,21 +80,24 @@ var generateMiscInfo = function (title, data) {
     infoCard.className = "d-flex flex-column flex-grow-1";
     var infoCardTitle = document.createElement("div");
     infoCardTitle.innerText = "".concat(title);
-    infoCardTitle.className = "fs-5";
+    infoCardTitle.className = "fs-5 fw-medium fst-italic text-center fw-lighter";
     var infoCardBody = document.createElement("div");
-    infoCardBody.className = "flex-wrap d-flex flex-row gap-2";
+    // infoCardBody.className = "flex-wrap d-flex flex-row gap-2";
+    infoCardBody.className = "text-info fs-6 fw-lighter text-center";
+    infoCardBody.style.cursor = "pointer";
     var i = 0;
     for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
         var eachInfoDatum = data_1[_i];
         var eachInfoSpan = document.createElement("span");
-        eachInfoSpan.innerText = eachInfoDatum;
-        // eachInfoSpan.innerText = `${title} ${i + 1}`
-        // eachInfoSpan.setAttribute("data-bs-toggle", "tooltip");
-        // eachInfoSpan.setAttribute("data-bs-title", eachInfoDatum);
-        // eachInfoSpan.setAttribute("data-bs-placement", "right");
-        // eachInfoSpan.setAttribute("data-bs-trigger", "hover");
+        eachInfoSpan.className = "text-center";
+        // eachInfoSpan.innerText = eachInfoDatum;
+        eachInfoSpan.innerText = "- ".concat(i + 1, " -");
+        eachInfoSpan.setAttribute("data-bs-toggle", "tooltip");
+        eachInfoSpan.setAttribute("data-bs-title", eachInfoDatum);
+        eachInfoSpan.setAttribute("data-bs-placement", "right");
+        eachInfoSpan.setAttribute("data-bs-trigger", "hover");
         infoCardBody.appendChild(eachInfoSpan);
-        // i++;
+        i++;
     }
     infoCard.appendChild(infoCardTitle);
     infoCard.appendChild(infoCardBody);
@@ -125,7 +128,7 @@ var generateMeaningCard = function (meaning) {
         }
     });
     var baseCardTitle = document.createElement("div");
-    baseCardTitle.className = "fst-italic fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top text-nowrap";
+    baseCardTitle.className = "fst-italic fw-bold fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top text-nowrap";
     baseCardTitle.style.backgroundColor = "white";
     baseCardTitle.style.width = "100%";
     baseCardTitle.innerText = meaning.partOfSpeech;
