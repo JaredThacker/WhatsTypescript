@@ -91,10 +91,11 @@ var generateMiscInfo = function (title, data) {
         var eachInfoSpan = document.createElement("span");
         eachInfoSpan.className = "text-center";
         // eachInfoSpan.innerText = eachInfoDatum;
-        eachInfoSpan.innerText = "- ".concat(i + 1, " -");
+        // eachInfoSpan.innerText = `- ${i + 1} -`
+        eachInfoSpan.innerText = "".concat(i + 1, " ");
         eachInfoSpan.setAttribute("data-bs-toggle", "tooltip");
         eachInfoSpan.setAttribute("data-bs-title", eachInfoDatum);
-        eachInfoSpan.setAttribute("data-bs-placement", "right");
+        eachInfoSpan.setAttribute("data-bs-placement", "top");
         eachInfoSpan.setAttribute("data-bs-trigger", "hover");
         infoCardBody.appendChild(eachInfoSpan);
         i++;
