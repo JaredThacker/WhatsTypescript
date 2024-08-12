@@ -83,10 +83,11 @@ const generateMiscInfo = (title: string, data: string[]): HTMLDivElement => {
     const eachInfoSpan = document.createElement("span");
     eachInfoSpan.className = "text-center";
     // eachInfoSpan.innerText = eachInfoDatum;
-    eachInfoSpan.innerText = `- ${i + 1} -`
+    // eachInfoSpan.innerText = `- ${i + 1} -`
+    eachInfoSpan.innerText = `${i + 1} `
     eachInfoSpan.setAttribute("data-bs-toggle", "tooltip");
     eachInfoSpan.setAttribute("data-bs-title", eachInfoDatum);
-    eachInfoSpan.setAttribute("data-bs-placement", "right");
+    eachInfoSpan.setAttribute("data-bs-placement", "top");
     eachInfoSpan.setAttribute("data-bs-trigger", "hover");
     infoCardBody.appendChild(eachInfoSpan);
     i++;
