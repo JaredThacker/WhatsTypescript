@@ -71,11 +71,11 @@ const generateMiscInfo = (title: string, data: string[]): HTMLDivElement => {
 
   const infoCardTitle = document.createElement("div");
   infoCardTitle.innerText = `${title}`;
-  infoCardTitle.className = "fs-5 text-center fw-lighter";
+  infoCardTitle.className = "fs-5 fw-medium fst-italic text-center fw-lighter";
 
   const infoCardBody = document.createElement("div");
   // infoCardBody.className = "flex-wrap d-flex flex-row gap-2";
-  infoCardBody.className = "text-primary fs-6 fw-lighter text-center";
+  infoCardBody.className = "text-info fs-6 fw-lighter text-center";
   infoCardBody.style.cursor = "pointer";
 
   let i = 0;
@@ -132,7 +132,7 @@ const generateMeaningCard = (meaning: Meaning): HTMLDivElement => {
   });
 
   const baseCardTitle = document.createElement("div");
-  baseCardTitle.className = "fst-italic fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top text-nowrap"
+  baseCardTitle.className = "fst-italic fw-bold fs-5 pt-3 pb-2 px-3 text-center text-decoration-underline sticky-top text-nowrap"
   baseCardTitle.style.backgroundColor = "white";
   baseCardTitle.style.width = "100%";
   baseCardTitle.innerText = meaning.partOfSpeech;
